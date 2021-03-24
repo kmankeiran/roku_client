@@ -13,7 +13,11 @@ router.use('/api', createProxyMiddleware({
 }))
 
 router.get('/', (req, res) => {
-    res.send('hit the main route');
+    res.render('index', { message: "Hello from handlebars!" });
+})
+
+router.get('/portfolio', (req, res) => {
+    res.render('artwork', { portmessage: "You're on the portfolio page"});
 })
 
 module.exports = router;
