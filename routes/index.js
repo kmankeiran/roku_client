@@ -16,4 +16,12 @@ router.get('/', (req, res) => {
     res.render('index', { message: "Hello from handlebars!" });
 })
 
+// other routes you might use
+router.use((req, res) => {
+    res.status(404);
+    res.render("error", { 
+        layout: "errorLayout.hbs", errormessage: `You've lost your way, traveler! "${req.url}" doesn't exist!`
+    });
+})
+
 module.exports = router;
