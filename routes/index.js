@@ -12,6 +12,15 @@ router.use('/api', createProxyMiddleware({
     changeOrigin: true
 }))
 
+// ums = User Management System. This router is for managing the users while the other one is for the movie data
+router.use('/ums', createProxyMiddleware({
+    target: 'http://localhost:5000',
+    headers: {
+        accept: 'application/json, application/x-www-form-urlencoded'
+    },
+    changeOrigin: true
+}))
+
 router.get('/', (req, res) => {
     res.render('index', { message: "Hello from handlebars!" });
 })
