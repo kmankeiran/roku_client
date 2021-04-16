@@ -24,6 +24,11 @@ export default {
 
     methods: {
         navToHome() {
-            this.$router.push({ name: "home", params: { currentuser: this.liveuser }})}
+            // navigate to the home page
+            this.$router.push({ name: "home", params: { currentuser: this.liveuser }})
+
+            // this should save the user to localstorage so that if they exist, they don't need to log in again
+            window.localStorage.setItem('cacheduser', JSON.stringify(this.liveuser));
+        }
     }
 }

@@ -25,7 +25,10 @@ export default {
 
 	data() {
 	  return (
-          {	message: `Who is signing into Roku today?`, userList: [] }
+          {	
+			message: `Who is signing into Roku today?`,
+			userList: [] 
+		}
       )
 	},
 

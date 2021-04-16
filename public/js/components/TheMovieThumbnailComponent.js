@@ -5,7 +5,7 @@ export default {
 
     template: `
     <div class="movie-thumb">
-        <img @click="loadPlayer(movie)" :src='"images/" + movie.movies_cover' alt="movie thumb">
+        <img class="img-thumbnail rounded float-left media-thumb" @click="loadPlayer(movie)" :src='"images/video/" + movie.movies_cover' alt="movie thumb">
     </div>
     `,
 

@@ -3,11 +3,11 @@
 			<header class="col-sm-12 fixed-top">
 				<img src="images/roku.svg" alt="Roku logo" width="90"><span>FlashBack</span>
 				<nav class="float-right">
-				<ul>           
-					<li><i class="fas fa-user-circle"></i></li>
-					<li v-if="isAdmin"><i class="fas fa-cog"></i></li>
-					<li @click="logout"><i class="fas fa-power-off"></i></li>					
-				</ul>
+					<ul v-if="currentUser">           
+						<li v-if="currentUser.user_avatar"><img class="small-avatar-rounded" :src='"images/" + currentUser.user_avatar'></li>
+						<li v-if="currentUser.user_admin"><i class="fas fa-cog"></i></li>
+						<li @click="logout"><i class="fas fa-power-off"></i></li>					
+					</ul>
 				</nav>
 			</header>
 		</div>
