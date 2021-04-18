@@ -1,7 +1,7 @@
 import TheMovieThumbnail from './TheMovieThumbnailComponent.js';
 
 export default {
-    name: "TheHomeComponent",
+    name: "TheAudioComponent",
 
     props: ['currentuser'],
 
@@ -9,14 +9,12 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-12 order-2 order-md-1 col-md-3 media-container">
-                <h4 class="media-title">{{currentMediaDetails.movies_title}}</h4>
-                <p class="media-details" v-html="currentMediaDetails.movies_storyline"></p>
-                <span class="media-time">{{currentMediaDetails.movies_runtime}}</span>
-                <span class="media-year">Released in {{currentMediaDetails.movies_year}}</span>
+                <h4 class="media-title">{{currentMediaDetails.music_title}}</h4>
+                <p class="media-artist" v-html="currentMediaDetails.music_artist"></p>
             </div>
 
             <div class="col-12 order-1 order-md-2 col-md-9 media-container">
-                <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
+                <audio controls muted :src="'audio/' + currentMediaDetails.music_player" class="fs-video"></audio>
             </div>
         </div>
 
@@ -39,27 +37,24 @@ export default {
                 <!-- genres for video -->
                 <ul class="media-genres">
                     <li>
-                        <a @click.prevent="filterMovies('action')" href="action">Action</a>
+                        <a @click.prevent="filterMusic('rap')" href="rap">Rap</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('comedy')" href="comedy">Comedy</a>
+                        <a @click.prevent="filterMusic('orchestra')" href="orchestra">Orchestra</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('family')" href="family">Family</a>
+                        <a @click.prevent="filterMusic('rock')" href="rock">Rock</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('fantasy')" href="fantasy">Fantasy</a>
+                        <a @click.prevent="filterMusic('neo-swing')" href="neo-swing">Neo Swing</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('adventure')" href="adventure">Adventure</a>
-                    </li>
-                    <li>
-                        <a @click.prevent="filterMovies('all')" href="all">All</a>
+                        <a @click.prevent="filterMusic('all')" href="all">All</a>
                     </li>
                 </ul>
 
                 <div class="thumb-wrapper clearfix">
-                    <img v-for="media in retrievedMedia" :src="'images/video/' + media.movies_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
+                    <img v-for="media in retrievedMedia" :src="'images/audio/' + media.music_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
                 </div>
             </div>       
         </div> <!-- end 2-up for media info -->
@@ -83,7 +78,7 @@ export default {
     },
 
     created: function() {
-        this.loadMedia(null, 'movies');
+        this.loadMedia(null, 'music');
         this.$emit('setuser', this.currentuser);
         // fetch('./TheHomeComponent.js')
         //     .then(res => res.json())
@@ -91,11 +86,11 @@ export default {
     },
 
     methods: {
-        filterMovies(genre) {
+        filterMusic(genre) {
             if (genre === 'all') {
-                this.loadMedia(null, 'movies')
+                this.loadMedia(null, 'music')
             } else {
-                this.loadMedia(genre, 'movies')
+                this.loadMedia(genre, 'music')
             }
         },
 

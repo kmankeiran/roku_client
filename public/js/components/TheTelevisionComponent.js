@@ -1,7 +1,7 @@
 import TheMovieThumbnail from './TheMovieThumbnailComponent.js';
 
 export default {
-    name: "TheHomeComponent",
+    name: "TheTelevisionComponent",
 
     props: ['currentuser'],
 
@@ -9,14 +9,13 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-12 order-2 order-md-1 col-md-3 media-container">
-                <h4 class="media-title">{{currentMediaDetails.movies_title}}</h4>
-                <p class="media-details" v-html="currentMediaDetails.movies_storyline"></p>
-                <span class="media-time">{{currentMediaDetails.movies_runtime}}</span>
-                <span class="media-year">Released in {{currentMediaDetails.movies_year}}</span>
+                <h4 class="media-title">{{currentMediaDetails.shows_title}}</h4>
+                <p class="media-details" v-html="currentMediaDetails.shows_storyline"></p>
+                <span class="media-year">Released in {{currentMediaDetails.shows_year}}</span>
             </div>
 
             <div class="col-12 order-1 order-md-2 col-md-9 media-container">
-                <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
+                <video autoplay controls muted :src="'video/' + currentMediaDetails.shows_trailer" class="fs-video"></video>
             </div>
         </div>
 
@@ -39,7 +38,7 @@ export default {
                 <!-- genres for video -->
                 <ul class="media-genres">
                     <li>
-                        <a @click.prevent="filterMovies('action')" href="action">Action</a>
+                        <a @click.prevent="filterMovies('mystery')" href="mystery">Mystery</a>
                     </li>
                     <li>
                         <a @click.prevent="filterMovies('comedy')" href="comedy">Comedy</a>
@@ -48,10 +47,16 @@ export default {
                         <a @click.prevent="filterMovies('family')" href="family">Family</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('fantasy')" href="fantasy">Fantasy</a>
+                        <a @click.prevent="filterMovies('adventure')" href="adventure">Adventure</a>
                     </li>
                     <li>
-                        <a @click.prevent="filterMovies('adventure')" href="adventure">Adventure</a>
+                        <a @click.prevent="filterMovies('action')" href="action">Action</a>
+                    </li>
+                    <li>
+                        <a @click.prevent="filterMovies('horror')" href="horror">Horror</a>
+                    </li>
+                    <li>
+                        <a @click.prevent="filterMovies('drama')" href="drama">Drama</a>
                     </li>
                     <li>
                         <a @click.prevent="filterMovies('all')" href="all">All</a>
@@ -59,7 +64,7 @@ export default {
                 </ul>
 
                 <div class="thumb-wrapper clearfix">
-                    <img v-for="media in retrievedMedia" :src="'images/video/' + media.movies_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
+                    <img v-for="media in retrievedMedia" :src="'images/video/' + media.shows_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
                 </div>
             </div>       
         </div> <!-- end 2-up for media info -->
@@ -83,7 +88,7 @@ export default {
     },
 
     created: function() {
-        this.loadMedia(null, 'movies');
+        this.loadMedia(null, 'shows');
         this.$emit('setuser', this.currentuser);
         // fetch('./TheHomeComponent.js')
         //     .then(res => res.json())
@@ -93,9 +98,9 @@ export default {
     methods: {
         filterMovies(genre) {
             if (genre === 'all') {
-                this.loadMedia(null, 'movies')
+                this.loadMedia(null, 'shows')
             } else {
-                this.loadMedia(genre, 'movies')
+                this.loadMedia(genre, 'shows')
             }
         },
 

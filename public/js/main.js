@@ -1,6 +1,8 @@
 import LoginComponent from './components/TheLoginComponent.js';
 import AllUsers from './components/TheAllUsersComponent.js';
 import HomeComponent from './components/TheHomeComponent.js';
+import TelevisionComponent from './components/TheTelevisionComponent.js';
+import AudioComponent from './components/TheAudioComponent.js';
 
 const router = new VueRouter({
     routes: [
@@ -14,7 +16,9 @@ const router = new VueRouter({
             }
         }},
         { path: '/users', name: 'users', component: AllUsers },
-        { path: '/home', name: 'home', component: HomeComponent, props: true }
+        { path: '/home', name: 'home', component: HomeComponent, props: true },
+        { path: '/television', name: 'home', component: TelevisionComponent, props: true },
+        { path: '/audio', name: 'home', component: AudioComponent, props: true }
     ]
 });
 
@@ -58,9 +62,6 @@ const router = new VueRouter({
 
         },
 
-        // components: {
-        //     moviethumb: MovieThumb
-        // },
 
         //equivalent of router: router
         router
