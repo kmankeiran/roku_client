@@ -1,1 +1,4 @@
 node_modules
+public/video
+public/audio
+*.zip

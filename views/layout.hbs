@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> htmlhead}}
+
+<body>
+    <main id="app">
+        <!-- this is where handlebars will inject its templates -->
+        <!-- this is like a php include statement -->
+        {{> header }}
+        
+        {{{ body }}}
+
+        {{> footer }}
+    </main>
+    {{> scripts}}
+</body>
+</html>
